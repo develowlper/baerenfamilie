@@ -1,6 +1,6 @@
 {
   "name": "baerenfamilie",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "baerenfamilie",
   "author": "develowlper",
@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint --fix .",
-    "lint-check": "eslint ."
+    "lint-check": "eslint .",
+    "release": "standard-version"
   },
   "dependencies": {
     "@xstyled/styled-components": "^2.0.0",
