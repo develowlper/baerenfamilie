@@ -7,7 +7,7 @@ import { image } from 'faker';
 
 const images = new Array(10)
   .fill(null)
-  .map((x) => 'https://https://picsum.photos/196/256');
+  .map((x) => 'https://picsum.photos/196/256');
 
 const IndexPage = () => {
   return (
