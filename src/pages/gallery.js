@@ -5,7 +5,9 @@ import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import { image } from 'faker';
 
-const images = new Array(10).fill(null).map((x) => image.imageUrl(196, 256));
+const images = new Array(10)
+  .fill(null)
+  .map((x) => 'https://https://picsum.photos/196/256');
 
 const IndexPage = () => {
   return (
