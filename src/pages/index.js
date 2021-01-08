@@ -9,7 +9,11 @@ const IndexPage = () => {
     <XStyled>
       <Layout>
         <VideoStream />
-        <x.h1 margin="auto">baerenfamilie.wedding</x.h1>
+        <x.div position="absolute" top={0} w="100vw">
+          <x.h1 bg="background" textAlign="center" margin="auto">
+            baerenfamilie.wedding
+          </x.h1>
+        </x.div>
       </Layout>
     </XStyled>
   );

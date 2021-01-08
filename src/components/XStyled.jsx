@@ -9,6 +9,11 @@ import {
 
 const theme = {
   ...defaultTheme,
+  colors: {
+    ...defaultTheme.colors,
+    cool: 'hsl(300,100%,70%)',
+    background: '#0e2120',
+  },
   // Customize your theme here
 };
 
