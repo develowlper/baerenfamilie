@@ -34,7 +34,7 @@ const IndexPage = () => {
     //const image = capture();
     console.log('IMAGE');
     try {
-      const res = await fetch('/.netlify/functions/get3Link', {
+      const res = await fetch('/.netlify/functions/getS3Link', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ one: 'test' }),
