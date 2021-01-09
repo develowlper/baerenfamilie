@@ -82,26 +82,18 @@ const IndexPage = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <form
-              name="image"
-              onSubmit={handleSubmit}
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
+            <x.button
+              bg="cool"
+              w="50px"
+              h="50px"
+              borderRadius="50%"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              type="submit"
             >
-              <input type="hidden" name="form-name" value="image" />
-              <x.button
-                bg="cool"
-                w="50px"
-                h="50px"
-                borderRadius="50%"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                type="submit"
-              >
-                <CameraIcon />
-              </x.button>
-            </form>
+              <CameraIcon onClick={handleSubmit} />
+            </x.button>
           </x.div>
         </x.div>
       </Layout>
