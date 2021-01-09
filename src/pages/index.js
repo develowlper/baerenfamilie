@@ -31,7 +31,8 @@ const IndexPage = () => {
   }, []);
 
   const handleSubmit = React.useCallback(async () => {
-    const image = capture();
+    //const image = capture();
+    console.log('IMAGE');
     try {
       const res = await fetch('/', {
         method: 'POST',
