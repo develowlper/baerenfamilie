@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { x } from '@xstyled/styled-components';
+
 import Webcam from 'react-webcam';
 import XStyled from '../components/XStyled';
 import Layout from '../components/Layout';
@@ -11,12 +12,37 @@ const CameraIcon = styled(MdCamera)`
   color: bg;
 `;
 
+const CameraStream = styled(Webcam)`
+  width: 100vw;
+  height: 100vh;
+`;
+
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
+
 const IndexPage = () => {
   const webcamRef = React.useRef();
-
   const capture = React.useCallback(() => {
     const image = webcamRef.current.getScreenshot();
-    console.log(image);
+    return image;
+  }, []);
+
+  const handleSubmit = React.useCallback(async () => {
+    const image = capture();
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', image: 'test' }),
+      });
+      console.log('FORM SUBMITTED', res);
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   }, []);
 
   return (
@@ -27,12 +53,7 @@ const IndexPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            width={window.innerWidth}
-            height={window.innerHeight}
-          />
+          <CameraStream audio={false} ref={webcamRef} />
         </motion.div>
         <x.div
           position="absolute"
@@ -60,18 +81,26 @@ const IndexPage = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <x.button
-              bg="cool"
-              w="50px"
-              h="50px"
-              borderRadius="50%"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              onClick={capture}
+            <form
+              name="image"
+              onSubmit={handleSubmit}
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
             >
-              <CameraIcon />
-            </x.button>
+              <input type="hidden" name="form-name" value="image" />
+              <x.button
+                bg="cool"
+                w="50px"
+                h="50px"
+                borderRadius="50%"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                type="submit"
+              >
+                <CameraIcon />
+              </x.button>
+            </form>
           </x.div>
         </x.div>
       </Layout>
