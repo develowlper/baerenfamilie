@@ -13,6 +13,7 @@ const theme = {
     ...defaultTheme.colors,
     cool: 'hsl(300,100%,70%)',
     overlay: 'rgba(14, 33, 32, 0.7)',
+    bg: 'rgba(14, 33, 32, 1.0)',
   },
   // Customize your theme here
 };
